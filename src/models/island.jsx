@@ -19,46 +19,13 @@ import * as THREE from 'three';
 
 const Island = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
   const islandRef = useRef();
-  const { gl, viewport } = useThree();
+  const { gl, scene, viewport } = useThree();
   const { nodes, materials } = useGLTF(islandScene);
 
   const lastX = useRef(0);
   const rotationSpeed = useRef(0);
   const dampingFactor = 0.98; // Slightly lower damping for slower deceleration
   const rotationFactor = 0.02 * Math.PI; // Reduced rotation speed factor
-
-  // const textureLoader = new THREE.TextureLoader();
-  // // const agia_diffuse = textureLoader.load(agiaDiffuse);
-  // // const agia_normal = textureLoader.load(agiaNormal);
-  // // //const agia_specularGlossiness = textureLoader.load(agiaSpecular);
-  // const Base_y_Calles_diffuse = textureLoader.load(baseCallesDiffuse);
-  // const Base_y_Calles_emissive = textureLoader.load(baseCallesEmissive);
-  // const Base_y_Calles_normal = textureLoader.load(baseCallesNormal)
-
-  // const Concreto_edifs = textureLoader.load(concretoDiffuse);
-  // const Concreto_edifs_emissive = textureLoader.load(concretoEmissive);
-  // const Concreto_edifs_normal =  textureLoader.load(concretoNormal);
-
-  // useEffect(() => {
-  //   if (nodes && materials) {
-  //     if (materials.agia) {
-  // //       materials.agia.map = agia_diffuse; // Apply the diffuse texture
-  // //       // materials.agia.normalMap = agia_normal; // Apply the normal map
-  // //       //materials.agia.specularMap = agia_specularGlossiness; // Apply the specular glossiness texture
-  // //       materials.agia.needsUpdate = true; // Ensure the material updates
-
-  //       materials.Base_y_Calles.map = Base_y_Calles_diffuse;
-  //       // materials.Base_y_Calles.emissiveMap = Base_y_Calles_emissive;
-  //       // materials.Base_y_Calles.normalMap = Base_y_Calles_normal;
-  //       materials.Base_y_Calles.needsUpdate = true;
-
-  // //       // materials.Concreto_edifs.map = Concreto_edifs;
-  // //       // materials.Concreto_edifs.emissiveMap = Concreto_edifs_emissive;
-  // //       // materials.Concreto_edifs.normalMap = Concreto_edifs_normal;
-  //     }
-  //   }
-  // }, [nodes, materials, Base_y_Calles_diffuse
-  // ]);
 
 
   const handlePointerDown = (event) => {
@@ -132,7 +99,12 @@ const Island = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
   };
 
   useEffect(() => {
+
+    scene.background = new THREE.Color('#1B1C1E');
+
+
     const canvas = gl.domElement;
+
     canvas.addEventListener('pointerdown', handlePointerDown);
     canvas.addEventListener('pointerup', handlePointerUp);
     canvas.addEventListener('pointermove', handlePointerMove);
@@ -152,7 +124,7 @@ const Island = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
       canvas.removeEventListener('touchend', handleTouchEnd);
       canvas.removeEventListener('touchmove', handleTouchMove);
     };
-  }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
+  }, [gl, scene, handlePointerDown, handlePointerUp, handlePointerMove]);
 
   useFrame(() => {
     if (!isRotating) {

@@ -10,7 +10,7 @@ import Homeinfo from '../components/Homeinfo'
 
 const Home = () => {
   // State to manage the current stage
-  
+
   const [isRotating, setIsRotating] = useState(false);
   const [currentStage, setCurrentStage] = useState(1);
 
