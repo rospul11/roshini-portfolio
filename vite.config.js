@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   assetsInclude: ['**/*.glb'],
-  base:"/rospul11.github.io/"
+  base: "/",  // Base set to root because the repository name matches the GitHub username
 })
