@@ -1,11 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
-import image1 from '../assets/pics/girls1.png'
-import image2 from '../assets/pics/girls2.png'
-import image3 from '../assets/pics/girls3.png'
-import image4 from '../assets/pics/girls4.png'
-import image5 from '../assets/pics/girls5.png'
-import Slider from 'react-slick';
+
 
 const HomeInfo = ({ currentStage }) => {
 
@@ -41,7 +35,7 @@ const HomeInfo = ({ currentStage }) => {
         </div>
       );
     }
-    
+
 
     if (currentStage === 3) {
       return (
@@ -122,28 +116,52 @@ const HomeInfo = ({ currentStage }) => {
     }
     if (currentStage === 6) {
       return (
-        <div className='text-left py-6 px-8 mx-5 bg-gradient-to-r bg-white bg-opacity-80 rounded-lg shadow-2xl max-w-lg mx-auto border border-gray-300'>
-  <h1 className='text-xl font-bold text-black text-center mb-2 underline'>Fun Facts!</h1>
-  <div className='flex flex-col lg:flex-row items-start lg:items-center lg:space-x-6'>
-    <div className='flex-1'>
-      <p className='text-lg leading-relaxed text-gray-800 mb-4'>
-        When I’m not immersed in coding or working on new projects, I enjoy a variety of hobbies:
-        <ul className='list-disc list-inside pl-5 mt-2 space-y-2'>
-          <li className='hover:text-blue-600 transition-colors duration-300'>Music</li>
-          <li className='hover:text-blue-600 transition-colors duration-300'>Fostering animals</li>
-          <li className='hover:text-blue-600 transition-colors duration-300'>Volunteering at hospitals</li>
-        </ul>
-      </p>
-    </div>
-    
-  </div>
-</div>
-
-
-
-
+        <div className="text-left py-6 px-8 mx-5 bg-gradient-to-r bg-white bg-opacity-80 rounded-lg shadow-2xl max-w-lg mx-auto border border-gray-300">
+          <h1 className="text-xl font-bold text-black text-center mb-2 underline">Fun Facts!</h1>
+          <div className="flex flex-col lg:flex-row items-start lg:items-center lg:space-x-6">
+            <div className="flex-1">
+              <p className="text-lg leading-relaxed text-gray-800 mb-4">
+                When I’m not immersed in coding or working on new projects, I enjoy a variety of hobbies including music and fostering animals.
+              </p>
+            </div>
+          </div>
+          {/* Spotify Playlist Embed */}
+          <div className="mt-6">
+            <iframe
+              style={{ borderRadius: '12px' }}
+              src="https://open.spotify.com/embed/playlist/5xkRACR0aLXSOdITPScqOt?utm_source=generator&theme=0"
+              width="100%"
+              height="152"
+              frameBorder="0"
+              allowFullScreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <p>These are some of my favorite songs at the moment</p>
+        </div>
       );
     }
+    
+    if (currentStage === 7) {
+      return (
+        <div className='text-left py-6 px-8 mx-5 bg-gradient-to-r bg-white bg-opacity-80 rounded-lg shadow-2xl max-w-lg mx-auto border border-gray-300'>
+          <h1 className='text-xl font-bold text-black text-center mb-2 underline'>Contact Me</h1>
+          <p>
+            Email:
+            <a href="mailto:rpulle@ucsc.edu" className="text-blue-500 underline ml-1">rpulle@ucsc.edu</a>
+          </p>
+          <p>Phone: 5104025978</p>
+          <div className="flex justify-center items-center mt-4">
+            <a href="/Roshini Pulle Resume.docx.pdf" download="Roshini_Pulle_Resume.pdf" className="btn btn-outline">
+              Download Resume
+            </a>
+          </div>
+        </div>
+      );
+    }
+    
+    
     return null;
 
   };
